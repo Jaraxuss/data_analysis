@@ -26,6 +26,7 @@ class HtmlOutputer():
                     "装修情况","梯户比例","配备电梯","产权年限",
                     "挂牌时间","交易权属","上次交易","房屋用途",
                     "房屋年限","产权所属","抵押信息","房本备件",
+                    "链接"
                     ]
             writer = csv.writer(f,dialect='excel')
             writer.writerow(data)

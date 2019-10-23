@@ -38,7 +38,7 @@ class SpiderMain():
         #     "tiexinqiao": 9, "pukou": 100, "liuhe": 1,
         # }
         areas = {
-            "pukou": 100
+            "pukou": 1
         }
 
         # 1、抓取所有二手房详情界面链接，并将所有连接放入URL管理模块
@@ -65,7 +65,7 @@ class SpiderMain():
                         # 暂停0~3秒的整数秒，时间区间：[0,3]
                         time.sleep(random.randint(0, 3))
 
-        time.sleep(60*20)
+        # time.sleep(60*20)
         # 2、解析二手房具体细心页面
         id = 1
         stop = 1
@@ -89,7 +89,9 @@ class SpiderMain():
             else:
                 # 2.3 解析页面
                 try:
-                    ershoufang_data = self.parser.get_ershoufang_data(detail_html, id)
+                    ershoufang_data = self.parser.get_ershoufang_data(detail_html, detail_url, id)
+                    if ershoufang_data is None:
+                        continue
                 except Exception as e:
                     self.log.logger.error("2.3 解析页面出现异常:" + repr(e))
                 else:
