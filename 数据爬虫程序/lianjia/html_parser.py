@@ -7,7 +7,7 @@ Created on Sun Mar 18 17:00:31 2018
 
 
 from bs4 import BeautifulSoup
-from log import MyLog
+from .log import MyLog
 
 
 class HtmlParser():
@@ -66,11 +66,19 @@ class HtmlParser():
         ershoufang_data.append(total)
         ershoufang_data.append(unitPriceValue)
 
+        # 基本信息
         counta = 12
         for a_child in bsObj.find("div", {"class": "introContent"}).find("div", {"class": "base"}).find("div", {"class": "content"}).ul.findAll("li"):
             # print(child1)
             [s.extract() for s in a_child("span")]
             information = a_child.get_text()
+            
+            # 套内面积处理 暂无数据的使用户型分间计算
+            # if counta == 8:
+            #     print('套内面积: ' + information)
+            #     if information == '暂无数据':
+            #         a = bsObj.find("div", {"id": "infoList"}).find("div", {"class": "base"}).find("div", {"class": "content"}).ul.findAll("li")
+
             # 删除㎡
             if '㎡' in information:
                 information = information.replace('㎡', '')
@@ -81,6 +89,7 @@ class HtmlParser():
             ershoufang_data.append("null")
             counta = counta - 1
 
+        # 交易属性
         countb = 8
         for b_child in bsObj.find("div", {"class": "introContent"}).find("div", {"class": "transaction"}).find("div", {"class": "content"}).ul.findAll("li"):
             information = b_child.span.next_sibling.next_sibling.get_text()
