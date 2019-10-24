@@ -16,7 +16,7 @@ class HtmlOutputer():
     def __init__(self):
         """构造函数，初始化属性"""
         self.log = MyLog("html_outputer", "logs")
-        filename = "output\\ershoufang.csv"
+        filename = "output//ershoufang.csv"
         with open(filename, "w", newline="") as f:
             data = [
                 "id", "小区名称", "所在区域", "总价", "单价",
@@ -36,7 +36,7 @@ class HtmlOutputer():
             print("页面数据收集：传入数据为空！")
             return
 
-        filename = "output\\ershoufang.csv"
+        filename = "output//ershoufang.csv"
         with open(filename, "a", newline="") as f:
             writer = csv.writer(f, dialect='excel')
             writer.writerow(data)

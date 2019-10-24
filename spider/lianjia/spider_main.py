@@ -27,7 +27,7 @@ class SpiderMain():
         self.outputer = HtmlOutputer()
         # self.util=utill.DBConn()
 
-    def craw(self, root_url):
+    def craw(self, root_url, searchstr):
         """爬虫入口函数"""
         # areas = {
         #     "gulou": 100, "jianye": 72, "qinhuai": 100,
@@ -45,7 +45,8 @@ class SpiderMain():
         for area, pg_sum in areas.items():
             for num in range(1, pg_sum + 1):
                 # 1.1 拼接页面地址: https://nj.lianjia.com/ershoufang/gulou/pg2/
-                pg_url = root_url + area + "/pg" + str(num) + "/"
+                # pg_url = root_url + area + "/pg" + str(num) + "/"
+                pg_url = root_url + "/pg" + str(num) + "rs" + searchstr + "/"
                 self.log.logger.info("1.1 拼接页面地址：" + pg_url)
                 print("1.1 拼接页面地址：" + pg_url)
                 # 1.2 启动下载器,下载页面.
@@ -89,15 +90,15 @@ class SpiderMain():
             else:
                 # 2.3 解析页面
                 try:
-                    ershoufang_data = self.parser.get_ershoufang_data(detail_html, detail_url, id)
-                    if ershoufang_data is None:
+                    ershoufang_data_arr = self.parser.get_ershoufang_data(detail_html, detail_url, id)
+                    if ershoufang_data_arr is None:
                         continue
                 except Exception as e:
                     self.log.logger.error("2.3 解析页面出现异常:" + repr(e))
                 else:
                     # 2.4 输出数据
                     try:
-                        self.outputer.collect_data(ershoufang_data)
+                        self.outputer.collect_data(ershoufang_data_arr)
                     except Exception as e:
                         self.log.logger.error("2.4 输出数据出现异常:" + repr(e))
                     else:
@@ -113,8 +114,9 @@ class SpiderMain():
 
 if __name__ == "__main__":
     # 设定爬虫入口URL
-    root_url = "https://nj.lianjia.com/ershoufang/"
+    # root_url = "https://nj.lianjia.com/ershoufang/"
+    root_url = "https://nj.lianjia.com/ershoufang/rs天润城/"
     # 初始化爬虫对象
     obj_spider = SpiderMain()
     # 启动爬虫
-    obj_spider.craw(root_url)
+    obj_spider.craw(root_url, "天润城")

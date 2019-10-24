@@ -53,8 +53,9 @@ class HtmlParser():
             self.log.logger.error("页面解析(detail)：找不到total标签！")
 
         tag_unit = bsObj.find("span", {"class": "unitPriceValue"})
+        tag_unit = tag_unit.get_text().replace("元/平米", "")
         if tag_unit is not None:
-            unitPriceValue = tag_unit.get_text()
+            unitPriceValue = tag_unit
         else:
             self.log.logger.error("页面解析(detail)：找不到total标签！")
 
@@ -122,8 +123,8 @@ class HtmlParser():
             for child in sellListContent.children:
                 if child["class"][0] == "clear":
                     ershoufang_urls.add(child.a["href"])
-                    print("1.3 页面解析：pg页面解析成功！")
-                    return ershoufang_urls
+                    # print("1.3 页面解析：pg页面解析成功！")
+                    # return ershoufang_urls
                     self.log.logger.info(child.a["href"])
                     # print(child.find("a",{"class":"img"})["href"])
         else:
