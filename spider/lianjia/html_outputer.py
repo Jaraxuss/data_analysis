@@ -7,7 +7,7 @@ Created on Sun Mar 18 17:00:15 2018
 
 import csv
 
-from .log import MyLog
+from spider.lianjia.log import MyLog
 
 
 class HtmlOutputer():

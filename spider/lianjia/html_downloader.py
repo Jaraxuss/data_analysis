@@ -9,7 +9,7 @@ import random
 
 import requests
 
-from .log import MyLog
+from spider.lianjia.log import MyLog
 
 
 class HtmlDownloader():

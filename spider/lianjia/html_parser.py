@@ -6,9 +6,7 @@ Created on Sun Mar 18 17:00:31 2018
 """
 
 from bs4 import BeautifulSoup
-
-from .log import MyLog
-
+from spider.lianjia.log import MyLog
 
 class HtmlParser():
     """网页解析模块"""

@@ -8,11 +8,11 @@ Created on Tue Mar 20 10:35:07 2018
 import random
 import time
 
-from .html_downloader import HtmlDownloader
-from .html_outputer import HtmlOutputer
-from .html_parser import HtmlParser
-from .log import MyLog
-from .url_manager import UrlManager
+from spider.lianjia.html_downloader import HtmlDownloader
+from spider.lianjia.html_outputer import HtmlOutputer
+from spider.lianjia.html_parser import HtmlParser
+from spider.lianjia.log import MyLog
+from spider.lianjia.url_manager import UrlManager
 
 
 class SpiderMain():
