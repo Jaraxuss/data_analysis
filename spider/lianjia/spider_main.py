@@ -5,14 +5,14 @@ Created on Tue Mar 20 10:35:07 2018
 @author: zhangying
 """
 
-
-from url_manager import UrlManager
-from log import MyLog
-from html_downloader import HtmlDownloader
-from html_parser import HtmlParser
-from html_outputer import HtmlOutputer
-import time
 import random
+import time
+
+from .html_downloader import HtmlDownloader
+from .html_outputer import HtmlOutputer
+from .html_parser import HtmlParser
+from .log import MyLog
+from .url_manager import UrlManager
 
 
 class SpiderMain():
@@ -43,7 +43,7 @@ class SpiderMain():
 
         # 1、抓取所有二手房详情界面链接，并将所有连接放入URL管理模块
         for area, pg_sum in areas.items():
-            for num in range(1, pg_sum+1):
+            for num in range(1, pg_sum + 1):
                 # 1.1 拼接页面地址: https://nj.lianjia.com/ershoufang/gulou/pg2/
                 pg_url = root_url + area + "/pg" + str(num) + "/"
                 self.log.logger.info("1.1 拼接页面地址：" + pg_url)
@@ -53,7 +53,7 @@ class SpiderMain():
                     html_cont = self.downloader.download(pg_url)
                 except Exception as e:
                     self.log.logger.error("1.2 下载页面出现异常:" + repr(e))
-                    time.sleep(60*30)
+                    time.sleep(60 * 30)
                 else:
                     # 1.3 解析PG页面，获得二手房详情页面的链接,并将所有链接放入URL管理模块
                     try:
@@ -85,7 +85,7 @@ class SpiderMain():
             except Exception as e:
                 self.log.logger.error("2.2 下载页面出现异常:" + repr(e))
                 self.urls.add_new_url(detail_url)
-                time.sleep(60*30)
+                time.sleep(60 * 30)
             else:
                 # 2.3 解析页面
                 try:
@@ -108,7 +108,7 @@ class SpiderMain():
                         time.sleep(random.randint(0, 3))
                         if stop == 2500:
                             stop = 1
-                            time.sleep(60*20)
+                            time.sleep(60 * 20)
 
 
 if __name__ == "__main__":

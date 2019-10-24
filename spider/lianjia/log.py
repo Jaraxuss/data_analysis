@@ -5,8 +5,8 @@ Created on Tue Mar 20 16:38:37 2018
 @author: zhangying
 """
 
-import logging
 import datetime
+import logging
 
 
 class MyLog():

@@ -5,8 +5,8 @@ Created on Sun Mar 18 17:00:31 2018
 @author: zhangying
 """
 
-
 from bs4 import BeautifulSoup
+
 from .log import MyLog
 
 
@@ -72,7 +72,7 @@ class HtmlParser():
             # print(child1)
             [s.extract() for s in a_child("span")]
             information = a_child.get_text()
-            
+
             # 套内面积处理 暂无数据的使用户型分间计算
             # if counta == 8:
             #     print('套内面积: ' + information)
