@@ -102,3 +102,4 @@ ENV/
 
 /.idea
 /.vscode
+spider/lianjia/__pycache__

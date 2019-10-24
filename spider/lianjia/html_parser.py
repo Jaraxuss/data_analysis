@@ -124,6 +124,8 @@ class HtmlParser():
             for child in sellListContent.children:
                 if child["class"][0] == "clear":
                     ershoufang_urls.add(child.a["href"])
+                    print("1.3 页面解析：pg页面解析成功！")
+                    return ershoufang_urls
                     self.log.logger.info(child.a["href"])
                     # print(child.find("a",{"class":"img"})["href"])
         else:
