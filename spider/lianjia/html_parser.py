@@ -17,7 +17,7 @@ class HtmlParser():
 
     def get_ershoufang_data(self, html_cont, detail_url, id):
         """获取二手房页面详细数据"""
-        if html_cont is None:
+        if html_cont is     None:
             self.log.logger.error("页面解析(detail)：传入页面为空！")
             print("页面解析(detail)：传入页面为空！")
             return
@@ -59,6 +59,7 @@ class HtmlParser():
         else:
             self.log.logger.error("页面解析(detail)：找不到total标签！")
 
+        id = detail_url.replace("https://nj.lianjia.com/ershoufang/", "").replace(".html", "")
         ershoufang_data.append(id)
         ershoufang_data.append(communityName)
         ershoufang_data.append(areaName)
@@ -123,8 +124,9 @@ class HtmlParser():
             for child in sellListContent.children:
                 if child["class"][0] == "clear":
                     ershoufang_urls.add(child.a["href"])
-                    # print("1.3 页面解析：pg页面解析成功！")
-                    # return ershoufang_urls
+                    # test
+                    print("1.3 页面解析：pg页面解析成功！")
+                    return ershoufang_urls
                     self.log.logger.info(child.a["href"])
                     # print(child.find("a",{"class":"img"})["href"])
         else:

@@ -48,7 +48,7 @@ class SpiderMain():
                 # pg_url = root_url + area + "/pg" + str(num) + "/"
                 pg_url = root_url + "/pg" + str(num) + "rs" + searchstr + "/"
                 self.log.logger.info("1.1 拼接页面地址：" + pg_url)
-                print("1.1 拼接页面地址：" + pg_url)
+                # print("1.1 拼接页面地址：" + pg_url)
                 # 1.2 启动下载器,下载页面.
                 try:
                     html_cont = self.downloader.download(pg_url)
@@ -66,7 +66,7 @@ class SpiderMain():
                         # 暂停0~3秒的整数秒，时间区间：[0,3]
                         time.sleep(random.randint(0, 3))
 
-        # time.sleep(60*20)
+        # time.sleep(60 * 20)
         # 2、解析二手房具体细心页面
         id = 1
         stop = 1
@@ -97,19 +97,28 @@ class SpiderMain():
                     self.log.logger.error("2.3 解析页面出现异常:" + repr(e))
                 else:
                     # 2.4 输出数据
-                    try:
-                        self.outputer.collect_data(ershoufang_data_arr)
-                    except Exception as e:
-                        self.log.logger.error("2.4 输出数据出现异常:" + repr(e))
-                    else:
-                        print(id)
-                        id = id + 1
-                        stop = stop + 1
-                        # 暂停0~3秒的整数秒，时间区间：[0,3]
-                        time.sleep(random.randint(0, 3))
-                        if stop == 2500:
-                            stop = 1
-                            time.sleep(60 * 20)
+                    # try:
+                    #     self.outputer.collect_data(ershoufang_data_arr)
+                    # except Exception as e:
+                    #     self.log.logger.error("2.4 输出数据出现异常:" + repr(e))
+                    # else:
+                    #     print(id)
+                    #     id = id + 1
+                    #     stop = stop + 1
+                    #     # 暂停0~3秒的整数秒，时间区间：[0,3]
+                    #     time.sleep(random.randint(0, 3))
+                    #     if stop == 2500:
+                    #         stop = 1
+                    #         time.sleep(60 * 20)
+
+                    self.outputer.collect_data(ershoufang_data_arr)
+                    id = id + 1
+                    stop = stop + 1
+                    # 暂停0~3秒的整数秒，时间区间：[0,3]
+                    time.sleep(random.randint(0, 3))
+                    if stop == 2500:
+                        stop = 1
+                        time.sleep(60 * 20)
 
 
 if __name__ == "__main__":

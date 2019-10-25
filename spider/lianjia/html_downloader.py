@@ -55,5 +55,5 @@ class HtmlDownloader():
             return None
 
         self.log.logger.info("页面下载：成功!")
-        print("页面下载：成功!")
+        # print("页面下载：成功!")
         return r.text
