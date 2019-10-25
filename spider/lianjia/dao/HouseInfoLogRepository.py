@@ -37,7 +37,7 @@ class HouseInfoLogRepository(object):
         """
 
 
-        print(houseInfoLog.__dict__)
+        # print(houseInfoLog.__dict__)
 
         session = mysqlClient.DBSession()
         session.add(houseInfoLog)

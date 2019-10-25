@@ -38,7 +38,7 @@ class SpiderMain():
         #     "tiexinqiao": 9, "pukou": 100, "liuhe": 1,
         # }
         areas = {
-            "pukou": 1
+            "pukou": 57
         }
 
         # 1、抓取所有二手房详情界面链接，并将所有连接放入URL管理模块
